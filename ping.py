@@ -49,6 +49,8 @@ def main():
     }
 
     try:
+        print('==================================')
+
         # Calls all the different APIs.
         if req.get(r'https://graph.microsoft.com/v1.0/me/drive/root', headers=headers).status_code == 200:
             num1 += 1
