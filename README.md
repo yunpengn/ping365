@@ -19,6 +19,7 @@ The mechanism of this application is so easy that it is very hard to explain.
 export APP_ID=<value_here>
 export APP_SECRET=<value_here>
 export APP_REFRESH_TOKEN=<value_here>
+export PERSONAL_TOKEN=<value_here>
 ```
 
 ## Licence
