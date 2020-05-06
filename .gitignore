@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# MacOS specific files
+.DS_Store
+
+# Project specific files
+refresh_token.txt
