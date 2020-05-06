@@ -1,0 +1,20 @@
+name: Ping APIs
+
+# Defines when to trigger this workflow
+on:
+  # At minute 15 every 3 hours.
+  schedule:
+    - cron: '15 */3 * * *'
+
+# Defines all jobs to be run in parallel.
+jobs:
+  # See https://help.github.com/en/actions/language-and-framework-guides
+  ping-refresh:
+    name: Ping APIs & refresh token
+    runs-on: ubuntu-latest
+    steps:
+      # See https://github.com/actions/checkout
+      - name: Download the repository to $GITHUB_WORKSPACE
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 50

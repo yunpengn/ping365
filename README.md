@@ -1,5 +1,7 @@
 # ping365
 
+[![CI pipeline](https://github.com/yunpengn/ping365/workflows/CI%20pipeline/badge.svg)](https://github.com/yunpengn/ping365/actions)
+
 A simple toolkit to automatically & periodically ping Office 365 APIs.
 
 ## How does it work
