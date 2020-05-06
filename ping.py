@@ -79,7 +79,7 @@ def main():
         print('==================================\n')
     except:
         print('Something goes wrong. Pass it.')
-        exit(1)
+        pass
 
 # Repeats for 3 times.
 for _ in range(3):
