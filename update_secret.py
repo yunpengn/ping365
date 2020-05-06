@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from base64 import b64encode
+from pathlib import Path
 from nacl import encoding, public
 import json
 import os
@@ -25,6 +26,7 @@ def get_public_key():
 	resp = req.get('https://api.github.com/repos/yunpengn/ping365/actions/secrets/public-key', headers=headers)
 	if resp.status_code != 200:
 		print('Unexpected resp when getting public key: {}'.format(resp))
+		exit()
 
 	# Parses the response.
 	data = json.loads(resp.text)
@@ -33,15 +35,46 @@ def get_public_key():
 
 # Encrypts the given value with the public key.
 def encrypt(public_key, plaintext):
-	return plaintext
+	public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
+    sealed_box = public.SealedBox(public_key)
+    encrypted = sealed_box.encrypt(plaintext.encode("utf-8"))
+    return b64encode(encrypted).decode("utf-8")
 
 
 # Creates / updates the secret.
 def set_secret(key_id, ciphertext):
+	# Calls the endpoint.
+	headers = {
+        'Authorization': 'Bearer ' + github_token,
+        'Content-Type': 'application/json'
+    }
+    data = {
+    	'encrypted_value': ciphertext,
+		'key_id': key_id
+    }
+	resp = req.post('https://api.github.com/repos/yunpengn/ping365/actions/secrets/APP_REFRESH_TOKEN', data=data, headers=headers)
+	if resp.status_code != 200:
+		print('Unexpected resp when setting secret: {}'.format(resp))
+		exit()
+
+	# Success.
 	return
 
 
 # Sets the new refresh token.
 if __name__ == "__main__":
+	# Retrieves the value.
+	if !Path(path).is_file():
+		print('{} is not a file.'.format(path))
+		exit()
 	file = open(path, 'r')
 	refresh_token = file.read().replace('\n', '')
+
+	# Gets the public key.
+	key_id, public_key = get_public_key()
+
+	# Encrypts the token.
+	ciphertext = encrypt(public_key, refresh_token)
+
+	# Updates the secret.
+	set_secret(key_id, ciphertext)
