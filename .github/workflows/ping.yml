@@ -31,3 +31,10 @@ jobs:
       # See https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#installing-dependencies
       - name: Install dependencies
         run: pip install -r requirements.txt
+      # See https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions
+      - name: Run ping script
+        env: 
+          APP_ID: ${{ secrets.appID }}
+          APP_SECRET: ${{ secrets.appSecret }}
+          APP_REFRESH_TOKEN: ${{ secrets.appRefreshToken }}
+        run: python3 ping.py

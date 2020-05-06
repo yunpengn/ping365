@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+import os
 import requests as req
 import sys
 import time
@@ -21,9 +22,9 @@ def get_token(refresh_token):
     }
     data = {
         'grant_type': 'refresh_token',
-        'refresh_token': refresh_token,
-        'client_id': id,
-        'client_secret': secret,
+        'refresh_token': os.environ['APP_REFRESH_TOKEN'],
+        'client_id': os.environ['APP_ID'],
+        'client_secret': os.environ['APP_SECRET'],
         'redirect_uri': 'http://localhost:53682/',
     }
     resp = req.post('https://login.microsoftonline.com/common/oauth2/v2.0/token', data=data, headers=headers)
@@ -38,18 +39,12 @@ def get_token(refresh_token):
 
 
 def main():
-    # Retrieves the previous refresh token.
-    print("Going to retrieve refresh token at path {}".format(path))
-    fo = open(path, 'r+')
-    refresh_token = fo.read()
-    fo.close()
-
     # The global counter.
     global num1
 
     # The common header to be used.
     headers = {
-        'Authorization': get_token(refresh_token),
+        'Authorization': get_token(),
         'Content-Type': 'application/json'
     }
 
