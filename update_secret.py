@@ -72,9 +72,12 @@ if __name__ == "__main__":
 
 	# Gets the public key.
 	key_id, public_key = get_public_key()
+	print('Successully got the public key.')
 
 	# Encrypts the token.
 	ciphertext = encrypt(public_key, refresh_token)
+	print('Successully encrypt the value.')
 
 	# Updates the secret.
 	set_secret(key_id, ciphertext)
+	print('Complete.')
