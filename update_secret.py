@@ -24,7 +24,7 @@ def get_public_key():
     }
     resp = req.get('https://api.github.com/repos/yunpengn/ping365/actions/secrets/public-key', headers=headers)
     if resp.status_code != 200:
-        print('Unexpected resp when getting public key: {}'.format(resp))
+        print('Unexpected resp when getting public key: {} {}'.format(resp.status_code, resp.text))
         exit(1)
 
     # Parses the response.
@@ -53,7 +53,7 @@ def set_secret(key_id, ciphertext):
     }
     resp = req.post('https://api.github.com/repos/yunpengn/ping365/actions/secrets/APP_REFRESH_TOKEN', data=data, headers=headers)
     if resp.status_code != 200:
-        print('Unexpected resp when setting secret: {}'.format(resp))
+        print('Unexpected resp when setting secret: {} {}'.format(resp.status_code, resp.text))
         exit(1)
 
     # Success.

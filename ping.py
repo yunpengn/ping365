@@ -71,6 +71,7 @@ def main():
                 print("#{}: API call to {} success".format(count, endpoint))
             else:
                 print("#{}: invalid resp to {}: {}".format(count, endpoint, resp))
+                exit(1)
         
         # Reports the timing.
         local_time = time.asctime(time.localtime(time.time()))
@@ -78,7 +79,7 @@ def main():
         print('==================================\n')
     except:
         print('Something goes wrong. Pass it.')
-        pass
+        exit(1)
 
 # Repeats for 3 times.
 for _ in range(3):
