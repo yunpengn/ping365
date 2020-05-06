@@ -9,7 +9,7 @@ import time
 
 
 # A counter.
-num1 = 0
+count = 0
 # Path to the file storing refresh token.
 path = sys.path[0] + r'/refresh_token.txt'
 
@@ -40,7 +40,7 @@ def get_token():
 
 def main():
     # The global counter.
-    global num1
+    global count
 
     # The common header to be used.
     headers = {
@@ -67,10 +67,10 @@ def main():
         for endpoint in endpoints:
             resp = req.get(endpoint, headers=headers)
             if resp.status_code == 200:
-                num1 += 1
-                print("#{}: API call to {} success".format(num1, endpoint))
+                count += 1
+                print("#{}: API call to {} success".format(count, endpoint))
             else:
-                print("#{}: invalid resp to {}: {}".format(num1, endpoint, resp))
+                print("#{}: invalid resp to {}: {}".format(count, endpoint, resp))
         
         # Reports the timing.
         local_time = time.asctime(time.localtime(time.time()))
