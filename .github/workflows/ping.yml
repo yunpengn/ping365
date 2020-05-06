@@ -2,6 +2,10 @@ name: Ping APIs
 
 # Defines when to trigger this workflow
 on:
+  # When pushing commit(s) to master or adding any tag(s).
+  push:
+    branches: [ master ]
+    tags: [ '**' ]
   # At minute 15 every 3 hours.
   schedule:
     - cron: '15 */3 * * *'
@@ -18,3 +22,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 50
+      # See https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions
+      - name: Setup Python 3
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+          architecture: x64
+      # See https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#installing-dependencies
+      - name: Install dependencies
+        run: pip install -r requirements.txt
