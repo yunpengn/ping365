@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from base64 import b64encode
-from pathlib import Path
 from nacl import encoding, public
 import json
 import os
@@ -64,7 +63,7 @@ def set_secret(key_id, ciphertext):
 # Sets the new refresh token.
 if __name__ == "__main__":
     # Retrieves the value.
-    if !Path(path).is_file():
+    if !os.path.isfile(path):
         print('{} is not a file.'.format(path))
         exit()
     file = open(path, 'r')
