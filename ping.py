@@ -66,12 +66,11 @@ def main():
         # Calls all the different APIs.
         for endpoint in endpoints:
             resp = req.get(endpoint, headers=headers)
+            count += 1
             if resp.status_code == 200:
-                count += 1
                 print("#{}: API call to {} success".format(count, endpoint))
             else:
                 print("#{}: invalid resp to {}: {}".format(count, endpoint, resp))
-                exit(1)
         
         # Reports the timing.
         local_time = time.asctime(time.localtime(time.time()))
