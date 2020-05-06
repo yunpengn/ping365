@@ -69,7 +69,8 @@ def main():
             if resp.status_code == 200:
                 num1 += 1
                 print("#{}: API call to {} success".format(num1, endpoint))
-            print("#{}: 11th call success".format(num1))
+            else:
+                print("#{}: invalid resp to {}: {}".format(num1, endpoint, resp))
         
         # Reports the timing.
         local_time = time.asctime(time.localtime(time.time()))

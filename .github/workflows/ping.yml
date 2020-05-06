@@ -38,3 +38,6 @@ jobs:
           APP_SECRET: ${{ secrets.APP_SECRET }}
           APP_REFRESH_TOKEN: ${{ secrets.APP_REFRESH_TOKEN }}
         run: python3 ping.py
+      # See https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions
+      - name: Update refresh token
+        run: python3 update_secret.py
