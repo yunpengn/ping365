@@ -15,7 +15,7 @@ path = sys.path[0] + r'/refresh_token.txt'
 
 
 # Uses the current token to retrieve new token and updates the storage.
-def get_token(refresh_token):
+def get_token():
     # Calls OAuth2 endpoint.
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded'
