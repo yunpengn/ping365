@@ -10,7 +10,7 @@ import sys
 
 
 # GitHub OAuth token.
-github_token = os.environ['GITHUB_TOKEN']
+github_token = os.environ['PERSONAL_TOKEN']
 # Path to the file storing refresh token.
 path = sys.path[0] + r'/refresh_token.txt'
 
@@ -19,7 +19,7 @@ path = sys.path[0] + r'/refresh_token.txt'
 def get_public_key():
     # Calls the endpoint.
     headers = {
-        'Authorization': 'Bearer ' + github_token,
+        'Authorization': 'token ' + github_token,
         'Content-Type': 'application/json'
     }
     resp = req.get('https://api.github.com/repos/yunpengn/ping365/actions/secrets/public-key', headers=headers)
@@ -44,7 +44,7 @@ def encrypt(public_key, plaintext):
 def set_secret(key_id, ciphertext):
     # Calls the endpoint.
     headers = {
-        'Authorization': 'Bearer ' + github_token,
+        'Authorization': 'token ' + github_token,
         'Content-Type': 'application/json'
     }
     data = {

@@ -41,5 +41,5 @@ jobs:
       # See https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions
       - name: Update refresh token
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         run: python3 update_secret.py
