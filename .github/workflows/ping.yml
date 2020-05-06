@@ -34,7 +34,7 @@ jobs:
       # See https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions
       - name: Run ping script
         env: 
-          APP_ID: ${{ secrets.appID }}
-          APP_SECRET: ${{ secrets.appSecret }}
-          APP_REFRESH_TOKEN: ${{ secrets.appRefreshToken }}
+          APP_ID: ${{ secrets.APP_ID }}
+          APP_SECRET: ${{ secrets.APP_SECRET }}
+          APP_REFRESH_TOKEN: ${{ secrets.APP_REFRESH_TOKEN }}
         run: python3 ping.py
