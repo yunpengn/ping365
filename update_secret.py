@@ -51,7 +51,7 @@ def set_secret(key_id, ciphertext):
         'encrypted_value': ciphertext,
         'key_id': key_id
     }
-    resp = req.post('https://api.github.com/repos/yunpengn/ping365/actions/secrets/APP_REFRESH_TOKEN', data=data, headers=headers)
+    resp = req.put('https://api.github.com/repos/yunpengn/ping365/actions/secrets/APP_REFRESH_TOKEN', data=data, headers=headers)
     if resp.status_code != 200:
         print('Unexpected resp when setting secret: {} {}'.format(resp.status_code, resp.text))
         exit(1)
