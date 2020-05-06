@@ -87,6 +87,7 @@ def main():
         # Reports the timing.
         local_time = time.asctime(time.localtime(time.time()))
         print('Executed at {}'.format(local_time))
+        print('==================================\n')
     except:
         print('Something goes wrong. Pass it.')
         pass
