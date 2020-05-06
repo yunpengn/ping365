@@ -30,7 +30,7 @@ jobs:
           architecture: x64
       # See https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#installing-dependencies
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip3 install -r requirements.txt
       # See https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions
       - name: Run ping script
         env: 
