@@ -63,7 +63,7 @@ def set_secret(key_id, ciphertext):
 # Sets the new refresh token.
 if __name__ == "__main__":
     # Retrieves the value.
-    if !os.path.isfile(path):
+    if not os.path.isfile(path):
         print('{} is not a file.'.format(path))
         exit()
     file = open(path, 'r')
