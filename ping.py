@@ -38,68 +38,63 @@ def get_token(refresh_token):
 
 
 def main():
+    # Retrieves the previous refresh token.
+    print("Going to retrieve refresh token at path {}".format(path))
     fo = open(path, 'r+')
     refresh_token = fo.read()
     fo.close()
 
+    # The global counter.
     global num1
-    localtime = time.asctime(time.localtime(time.time()))
-    access_token = get_token(refresh_token)
+
+    # The common header to be used.
     headers = {
-        'Authorization': access_token,
+        'Authorization': get_token(refresh_token),
         'Content-Type': 'application/json'
     }
 
     try:
-        if req.get(r'https://graph.microsoft.com/v1.0/me/drive/root',
-                   headers=headers).status_code == 200:
+        # Calls all the different APIs.
+        if req.get(r'https://graph.microsoft.com/v1.0/me/drive/root', headers=headers).status_code == 200:
             num1 += 1
-            print "1调用成功" + str(num1) + '次'
-        if req.get(r'https://graph.microsoft.com/v1.0/me/drive',
-                   headers=headers).status_code == 200:
+            print("#{}: 1st call success".format(num1))
+        if req.get(r'https://graph.microsoft.com/v1.0/me/drive', headers=headers).status_code == 200:
             num1 += 1
-            print "2调用成功" + str(num1) + '次'
-        if req.get(r'https://graph.microsoft.com/v1.0/drive/root',
-                   headers=headers).status_code == 200:
+            print("#{}: 2nd call success".format(num1))
+        if req.get(r'https://graph.microsoft.com/v1.0/drive/root', headers=headers).status_code == 200:
             num1 += 1
-            print '3调用成功' + str(num1) + '次'
-        if req.get(r'https://graph.microsoft.com/v1.0/users ',
-                   headers=headers).status_code == 200:
+            print("#{}: 3rd call success".format(num1))
+        if req.get(r'https://graph.microsoft.com/v1.0/users ', headers=headers).status_code == 200:
             num1 += 1
-            print '4调用成功' + str(num1) + '次'
-        if req.get(r'https://graph.microsoft.com/v1.0/me/messages',
-                   headers=headers).status_code == 200:
+            print("#{}: 4th call success".format(num1))
+        if req.get(r'https://graph.microsoft.com/v1.0/me/messages', headers=headers).status_code == 200:
             num1 += 1
-            print '5调用成功' + str(num1) + '次'
-        if req.get(r'https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messageRules'
-                   , headers=headers).status_code == 200:
+            print("#{}: 5th call success".format(num1))
+        if req.get(r'https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messageRules', headers=headers).status_code == 200:
             num1 += 1
-            print '6调用成功' + str(num1) + '次'
-        if req.get(r'https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messageRules'
-                   , headers=headers).status_code == 200:
+            print("#{}: 6th call success".format(num1))
+        if req.get(r'https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messageRules', headers=headers).status_code == 200:
             num1 += 1
-            print '7调用成功' + str(num1) + '次'
-        if req.get(r'https://graph.microsoft.com/v1.0/me/drive/root/children'
-                   , headers=headers).status_code == 200:
+            print("#{}: 7th call success".format(num1))
+        if req.get(r'https://graph.microsoft.com/v1.0/me/drive/root/children', headers=headers).status_code == 200:
             num1 += 1
-            print '8调用成功' + str(num1) + '次'
-        if req.get(r'https://api.powerbi.com/v1.0/myorg/apps',
-                   headers=headers).status_code == 200:
+            print("#{}: 8th call success".format(num1))
+        if req.get(r'https://api.powerbi.com/v1.0/myorg/apps', headers=headers).status_code == 200:
             num1 += 1
-            print '8调用成功' + str(num1) + '次'
-        if req.get(r'https://graph.microsoft.com/v1.0/me/mailFolders',
-                   headers=headers).status_code == 200:
+            print("#{}: 9th call success".format(num1))
+        if req.get(r'https://graph.microsoft.com/v1.0/me/mailFolders', headers=headers).status_code == 200:
             num1 += 1
-            print '9调用成功' + str(num1) + '次'
-        if req.get(r'https://graph.microsoft.com/v1.0/me/outlook/masterCategories'
-                   , headers=headers).status_code == 200:
+            print("#{}: 10th call success".format(num1))
+        if req.get(r'https://graph.microsoft.com/v1.0/me/outlook/masterCategories', headers=headers).status_code == 200:
             num1 += 1
-            print '10调用成功' + str(num1) + '次'
-            print ('此次运行结束时间为: ', localtime)
+            print("#{}: 11th call success".format(num1))
+        
+        # Reports the timing.
+        local_time = time.asctime(time.localtime(time.time()))
+        print('Executed at {}'.format(local_time))
     except:
-        print 'pass'
+        print('Something goes wrong. Pass it.')
         pass
-
 
 # Repeats for 3 times.
 for _ in range(3):
