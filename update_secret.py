@@ -69,6 +69,7 @@ if __name__ == "__main__":
 		exit()
 	file = open(path, 'r')
 	refresh_token = file.read().replace('\n', '')
+	print('Got the new refresh token.')
 
 	# Gets the public key.
 	key_id, public_key = get_public_key()
